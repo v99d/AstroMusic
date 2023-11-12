@@ -60,8 +60,8 @@ module.exports = {
                 .addComponents(
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
-                        .setLabel('Server Support')
-                        .setURL(`https://discord.gg/developer-tools`))
+                        .setLabel('@ha4h')
+                        .setURL(`https://discord.gg/hami`))
 
             message.reply({ embeds: [embed], components: [row] })
         } catch (err) {
