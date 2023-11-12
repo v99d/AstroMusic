@@ -1,18 +1,15 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+const port = 3000
 
+app.get('/', (req, res) => {
+  res.send('Music'
+           )
+})
 
-app.get('/', function (request, response) {
-  response.sendFile(__dirname + '/index.html');
-});
-
-app.use('/ping', (req, res) => {
-  res.send(new Date());
-});
-
-app.listen(9080, () => {
-  console.log(('Express is ready.').blue.bold)
-});
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`)
+})
 
 const { Client, Collection, Partials, GatewayIntentBits, ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, EmbedBuilder } = require('discord.js');
 
@@ -123,16 +120,6 @@ client.slashCommands = new Collection();
 ['commands', 'events', 'slash'].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 })
-
-const commands = client.slashCommands.map(({ execute, ...data }) => data);
-
-// Register slash commands
-const rest = new REST({ version: '9' }).setToken(config.token || process.env.token);
-rest.put(
-  Routes.applicationGuildCommands(config.clientID, config.guildID),
-  { body: commands },
-).then(() => console.log('Successfully registered application commands.'))
-  .catch(console.error)
 
 
 setTimeout(() => {
